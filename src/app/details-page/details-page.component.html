@@ -1,0 +1,27 @@
+<button mat-button color="primary" (click)="goBack()">Back</button>
+
+<mat-card *ngIf="transasction$ | async as transaction">
+  <form class="example-form" [formGroup]="transctionFromGroup">
+    <mat-form-field class="example-full-width">
+      <mat-label>ID</mat-label>
+      <input matInput [formControlName]="'id'" readonly />
+    </mat-form-field>
+    <mat-form-field class="example-full-width">
+      <mat-label>Date</mat-label>
+      <input matInput [formControlName]="'date'" readonly />
+    </mat-form-field>
+    <mat-form-field class="example-full-width">
+      <mat-label>Comment</mat-label>
+      <textarea matInput [formControlName]="'Comments'"></textarea>
+    </mat-form-field>
+
+    <button
+      mat-raised-button
+      color="primary"
+      [disabled]="transctionFromGroup.invalid"
+      (click)="updateComment()"
+    >
+      Update Comment
+    </button>
+  </form>
+</mat-card>
